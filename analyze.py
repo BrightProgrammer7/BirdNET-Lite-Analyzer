@@ -1,4 +1,3 @@
-
 import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 os.environ['CUDA_VISIBLE_DEVICES'] = ''
@@ -162,6 +161,10 @@ def analyzeAudioData(chunks, lat, lon, week, sensitivity, overlap, interpreter):
         detections[str(pred_start) + ';' + str(pred_end)] = p
         pred_start = pred_end - overlap
 
+        # Print detected sounds
+        for entry in p:
+            print(f"Detected: Scientific name: {entry[0].split('_')[0]}, Common name: {entry[0].split('_')[1]}, Confidence: {entry[1]}")
+
     print('DONE! Time', int((time.time() - start) * 10) / 10.0, 'SECONDS')
 
     return detections
@@ -177,6 +180,9 @@ def writeResultsToFile(detections, min_conf, path):
                 if entry[1] >= min_conf and (entry[0] in WHITE_LIST or len(WHITE_LIST) == 0):
                     rfile.write(d + ';' + entry[0].replace('_', ';') + ';' + str(entry[1]) + '\n')
                     rcnt += 1
+                    # Print detected sounds
+                    scientific_name, common_name = entry[0].split('_')
+                    print(f"Detected: Scientific name: {scientific_name}, Common name: {common_name}, Confidence: {entry[1]}")
     print('DONE! WROTE', rcnt, 'RESULTS.')
 
 def main():

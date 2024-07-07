@@ -104,3 +104,17 @@ We are always open for a collaboration with you.
 
 This project is supported by Jake Holshuh (Cornell class of ’69). The Arthur Vining Davis Foundations also kindly support our efforts.
 
+#
+
+TFLite version of BirdNET.
+Bird sound recognition for more than 6,000 species worldwide.
+
+![alt text](./assets/image.png)
+
+![alt text](./assets/image-1.png)
+
+![alt text](./assets/image-2.png)
+
+![alt text](./assets/image-4.png)
+
+![alt text](./assets/image-5.png)
